@@ -35,8 +35,8 @@ task run_filtering {
 	
 	command <<<
 	zcat ~{vcf} | awk '($4 != "*" && $5 != "*")' > ~{out_name}.removestared.vcf
-    bgzip ~{out_name}.removestared.vcf
-    tabix -p vcf ~{out_name}.removestared.vcf.gz
+	bgzip ~{out_name}.removestared.vcf
+	tabix -p vcf ~{out_name}.removestared.vcf.gz
 	
 	bcftools norm -m -both --fasta-ref ~{fasta_ref} -Oz -o ~{out_name}.cleaned.vcf.gz ~{out_name}.removestared.vcf.gz
 	tabix -p vcf ~{out_name}.cleaned.vcf.gz
