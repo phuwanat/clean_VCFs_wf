@@ -28,7 +28,7 @@ task run_filtering {
 		File vcf
 		Int memSizeGB = 8
 		Int threadCount = 2
-		Int diskSizeGB = 8*round(size(vcf, "GB")) + 20
+		Int diskSizeGB = 10*round(size(vcf, "GB")) + 40
 	String out_name = basename(vcf, ".vcf.gz")
 	String fasta_ref = "gs://gcp-public-data--broad-references/hg38/v0/Homo_sapiens_assembly38.fasta"
 	}
